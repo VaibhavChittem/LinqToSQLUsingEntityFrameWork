@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="257dd952f3da4d7195702ef308c37e54" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="HRModel.AnnualSalary" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.CampusRecruitment" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.College" Width="1.5" PointX="1.5" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.ContractRecruiter" Width="1.5" PointX="0.75" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Country" Width="1.5" PointX="0.75" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Department" Width="1.5" PointX="3.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Employee" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.EmployeeReferral" Width="1.5" PointX="8.25" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.ExternalCandidate" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.HRuser" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.InternalCandidate" Width="1.5" PointX="6" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.InternalJobPosting" Width="1.5" PointX="3.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.JobFair" Width="1.5" PointX="0.75" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.MonthlySalary" Width="1.5" PointX="8.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.NewsAd" Width="1.5" PointX="0.75" PointY="33.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Newspaper" Width="1.5" PointX="1.5" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Payment" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Position" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.RecruitmentAgency" Width="1.5" PointX="0.75" PointY="41.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Requisition" Width="1.5" PointX="3" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HRModel.Skill" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <AssociationConnector Association="HRModel.FK__AnnualSal__cEmpl__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__CampusRec__cColl__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__ExternalC__cCamp__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__ExternalC__cCont__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__Employee__cCount__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__ExternalC__cCoun__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__Newspaper__cCoun__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__Employee__cDepar__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__EmployeeR__cEmpl__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__MonthlySa__cEmpl__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__EmployeeR__cCand__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__ExternalC__cAgen__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__ExternalC__cJobF__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__ExternalC__cNews__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__ExternalC__cPosi__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__InternalC__cInte__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__InternalC__cPosi__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__NewsAd__cNewspap__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.FK__Requisiti__cPosi__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.CandidateSkill" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.EmployeeSkill" ManuallyRouted="false" />
+        <AssociationConnector Association="HRModel.PositionSkill" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

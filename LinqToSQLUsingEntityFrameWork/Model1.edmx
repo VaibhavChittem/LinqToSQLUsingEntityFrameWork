@@ -1,0 +1,1747 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AnnualSalary">
+          <Key>
+            <PropertyRef Name="cEmployeeCode" />
+            <PropertyRef Name="siYear" />
+          </Key>
+          <Property Name="cEmployeeCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="mAnnualSalary" Type="money" />
+          <Property Name="siYear" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampusRecruitment">
+          <Key>
+            <PropertyRef Name="cCampusRecruitmentCode" />
+          </Key>
+          <Property Name="cCampusRecruitmentCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="cCollegeCode" Type="char" MaxLength="4" />
+          <Property Name="dRecruitmentStartDate" Type="datetime" />
+          <Property Name="dRecruitmentEndDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CandidateSkill">
+          <Key>
+            <PropertyRef Name="cCandidateCode" />
+            <PropertyRef Name="cSkillCode" />
+          </Key>
+          <Property Name="cCandidateCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="cSkillCode" Type="char" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="College">
+          <Key>
+            <PropertyRef Name="cCollegeCode" />
+          </Key>
+          <Property Name="cCollegeCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="cCollegeName" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="vCollegeAddress" Type="varchar" MaxLength="35" />
+          <Property Name="cCity" Type="char" MaxLength="20" />
+          <Property Name="cState" Type="char" MaxLength="20" />
+          <Property Name="cZip" Type="char" MaxLength="10" />
+          <Property Name="cPhone" Type="char" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="ContractRecruiter">
+          <Key>
+            <PropertyRef Name="cContractRecruiterCode" />
+          </Key>
+          <Property Name="cContractRecruiterCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="cName" Type="char" MaxLength="35" />
+          <Property Name="vAddress" Type="varchar" MaxLength="35" />
+          <Property Name="cCity" Type="char" MaxLength="20" />
+          <Property Name="cState" Type="char" MaxLength="15" />
+          <Property Name="cZip" Type="char" MaxLength="10" />
+          <Property Name="cFax" Type="char" MaxLength="15" />
+          <Property Name="cPhone" Type="char" MaxLength="15" />
+          <Property Name="siPercentageCharge" Type="smallint" />
+          <Property Name="mTotalPaid" Type="money" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="cCountryCode" />
+          </Key>
+          <Property Name="cCountryCode" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="cCountry" Type="char" MaxLength="35" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="cDepartmentCode" />
+          </Key>
+          <Property Name="cDepartmentCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="vDepartmentName" Type="varchar" MaxLength="25" />
+          <Property Name="vDepartmentHead" Type="varchar" MaxLength="25" />
+          <Property Name="vLocation" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="cEmployeeCode" />
+          </Key>
+          <Property Name="cEmployeeCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="vFirstName" Type="varchar" MaxLength="20" />
+          <Property Name="vLastName" Type="varchar" MaxLength="20" />
+          <Property Name="cCandidateCode" Type="char" MaxLength="6" />
+          <Property Name="vAddress" Type="varchar" MaxLength="35" />
+          <Property Name="cCity" Type="char" MaxLength="20" />
+          <Property Name="cState" Type="char" MaxLength="20" />
+          <Property Name="cZip" Type="char" MaxLength="10" />
+          <Property Name="cCountryCode" Type="char" MaxLength="3" />
+          <Property Name="cPhone" Type="char" MaxLength="15" />
+          <Property Name="vQualification" Type="varchar" MaxLength="20" />
+          <Property Name="dBirthDate" Type="datetime" />
+          <Property Name="cSex" Type="char" MaxLength="1" />
+          <Property Name="cCurrentPosition" Type="char" MaxLength="20" />
+          <Property Name="cDesignation" Type="char" MaxLength="20" />
+          <Property Name="cEmailId" Type="char" MaxLength="20" />
+          <Property Name="cDepartmentCode" Type="char" MaxLength="4" />
+          <Property Name="cRegion" Type="char" MaxLength="20" />
+          <Property Name="imPhoto" Type="image" />
+          <Property Name="dJoiningDate" Type="datetime" />
+          <Property Name="dResignationDate" Type="datetime" />
+          <Property Name="cSocialSecurityNo" Type="char" MaxLength="15" />
+          <Property Name="cSupervisorCode" Type="char" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="EmployeeReferrals">
+          <Key>
+            <PropertyRef Name="cEmployeeReferralNo" />
+          </Key>
+          <Property Name="cEmployeeReferralNo" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="cEmployeeCode" Type="char" MaxLength="6" />
+          <Property Name="cCandidateCode" Type="char" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="EmployeeSkill">
+          <Key>
+            <PropertyRef Name="cEmployeeCode" />
+            <PropertyRef Name="cSkillCode" />
+          </Key>
+          <Property Name="cEmployeeCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="cSkillCode" Type="char" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExternalCandidate">
+          <Key>
+            <PropertyRef Name="cCandidateCode" />
+          </Key>
+          <Property Name="cCandidateCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="vFirstName" Type="varchar" MaxLength="20" />
+          <Property Name="vLastName" Type="varchar" MaxLength="20" />
+          <Property Name="vAddress" Type="varchar" MaxLength="35" />
+          <Property Name="cCity" Type="char" MaxLength="20" />
+          <Property Name="cState" Type="char" MaxLength="15" />
+          <Property Name="cZip" Type="char" MaxLength="10" />
+          <Property Name="cCountryCode" Type="char" MaxLength="3" />
+          <Property Name="cPhone" Type="char" MaxLength="15" />
+          <Property Name="cPositionCode" Type="char" MaxLength="4" />
+          <Property Name="dDateOfApplication" Type="datetime" />
+          <Property Name="cEmployeeReferralNo" Type="char" MaxLength="6" />
+          <Property Name="cNewsAdNo" Type="char" MaxLength="4" />
+          <Property Name="cAgencyCode" Type="char" MaxLength="4" />
+          <Property Name="cContractRecruiterCode" Type="char" MaxLength="4" />
+          <Property Name="cJobFairCode" Type="char" MaxLength="4" />
+          <Property Name="cCampusRecruitmentCode" Type="char" MaxLength="4" />
+          <Property Name="cExEmployeeCode" Type="char" MaxLength="6" />
+          <Property Name="vQualification" Type="varchar" MaxLength="20" />
+          <Property Name="siPrevWorkExperience" Type="smallint" />
+          <Property Name="dBirthDate" Type="datetime" />
+          <Property Name="cSex" Type="char" MaxLength="1" />
+          <Property Name="cCollegeCode" Type="char" MaxLength="4" />
+          <Property Name="mPrevAnnualSalary" Type="money" />
+          <Property Name="imPhotograph" Type="image" />
+          <Property Name="vEmailId" Type="varchar" MaxLength="20" />
+          <Property Name="cStatus" Type="char" MaxLength="1" />
+          <Property Name="dTestDate" Type="datetime" />
+          <Property Name="siTestScore" Type="smallint" />
+          <Property Name="dInterviewDate" Type="datetime" />
+          <Property Name="cInterviewer" Type="char" MaxLength="20" />
+          <Property Name="vInterviewComments" Type="varchar" MaxLength="256" />
+          <Property Name="cRating" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="HRusers">
+          <Key>
+            <PropertyRef Name="cUserName" />
+          </Key>
+          <Property Name="cUserName" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="cPassword" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="InternalCandidate">
+          <Key>
+            <PropertyRef Name="cCandidateCode" />
+            <PropertyRef Name="cEmployeeCode" />
+            <PropertyRef Name="cInternalJobPostingCode" />
+          </Key>
+          <Property Name="cCandidateCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="cEmployeeCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="cInternalJobPostingCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="cPositionCodeAppliedFor" Type="char" MaxLength="4" />
+          <Property Name="dDateOfApplication" Type="datetime" />
+          <Property Name="dTestDate" Type="datetime" />
+          <Property Name="siTestScore" Type="smallint" />
+          <Property Name="dInterviewDate" Type="datetime" />
+          <Property Name="cInterviewer" Type="char" MaxLength="25" />
+          <Property Name="vInterviewComments" Type="varchar" MaxLength="256" />
+          <Property Name="cRating" Type="char" MaxLength="1" />
+          <Property Name="cStatus" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="InternalJobPosting">
+          <Key>
+            <PropertyRef Name="cInternalJobPostingCode" />
+          </Key>
+          <Property Name="cInternalJobPostingCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="cPositionCode" Type="char" MaxLength="4" />
+          <Property Name="siNoOfVacancies" Type="smallint" Nullable="false" />
+          <Property Name="vRegion" Type="varchar" MaxLength="20" />
+          <Property Name="dNoticeReleaseDate" Type="datetime" Nullable="false" />
+          <Property Name="dDeadline" Type="datetime" />
+        </EntityType>
+        <EntityType Name="JobFair">
+          <Key>
+            <PropertyRef Name="cJobFairCode" />
+          </Key>
+          <Property Name="cJobFairCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="vLocation" Type="varchar" MaxLength="35" />
+          <Property Name="vJobFairCompany" Type="varchar" MaxLength="40" />
+          <Property Name="mFee" Type="money" />
+          <Property Name="dFairDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MonthlySalary">
+          <Key>
+            <PropertyRef Name="cEmployeeCode" />
+            <PropertyRef Name="dPayDate" />
+          </Key>
+          <Property Name="cEmployeeCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="mMonthlySalary" Type="money" />
+          <Property Name="dPayDate" Type="datetime" Nullable="false" />
+          <Property Name="mReferralBonus" Type="money" />
+        </EntityType>
+        <EntityType Name="NewsAd">
+          <Key>
+            <PropertyRef Name="cNewsAdNo" />
+          </Key>
+          <Property Name="cNewsAdNo" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="cNewspaperCode" Type="char" MaxLength="4" />
+          <Property Name="dAdStartDate" Type="datetime" />
+          <Property Name="dDeadline" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Newspaper">
+          <Key>
+            <PropertyRef Name="cNewspaperCode" />
+          </Key>
+          <Property Name="cNewspaperCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="cNewspaperName" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="vRegion" Type="varchar" MaxLength="20" />
+          <Property Name="vTypeOfNewspaper" Type="varchar" MaxLength="20" />
+          <Property Name="vContactPerson" Type="varchar" MaxLength="35" />
+          <Property Name="vHOAddress" Type="varchar" MaxLength="35" />
+          <Property Name="cCity" Type="char" MaxLength="20" />
+          <Property Name="cState" Type="char" MaxLength="20" />
+          <Property Name="cZip" Type="char" MaxLength="10" />
+          <Property Name="cCountryCode" Type="char" MaxLength="3" />
+          <Property Name="cFax" Type="char" MaxLength="15" />
+          <Property Name="cPhone" Type="char" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="cSourceCode" />
+            <PropertyRef Name="cChequeNo" />
+            <PropertyRef Name="dDate" />
+          </Key>
+          <Property Name="cSourceCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="mAmount" Type="money" />
+          <Property Name="cChequeNo" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="dDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="cPositionCode" />
+          </Key>
+          <Property Name="cPositionCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="vDescription" Type="varchar" MaxLength="35" />
+          <Property Name="iBudgetedStrength" Type="int" />
+          <Property Name="siYear" Type="smallint" />
+          <Property Name="iCurrentStrength" Type="int" />
+        </EntityType>
+        <EntityType Name="PositionSkill">
+          <Key>
+            <PropertyRef Name="cPositionCode" />
+            <PropertyRef Name="cSkillCode" />
+          </Key>
+          <Property Name="cPositionCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="cSkillCode" Type="char" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecruitmentAgencies">
+          <Key>
+            <PropertyRef Name="cAgencyCode" />
+          </Key>
+          <Property Name="cAgencyCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="cName" Type="char" MaxLength="20" />
+          <Property Name="vAddress" Type="varchar" MaxLength="35" />
+          <Property Name="cCity" Type="char" MaxLength="15" />
+          <Property Name="cState" Type="char" MaxLength="15" />
+          <Property Name="cZip" Type="char" MaxLength="10" />
+          <Property Name="cPhone" Type="char" MaxLength="15" />
+          <Property Name="cFax" Type="char" MaxLength="15" />
+          <Property Name="siPercentageCharge" Type="smallint" />
+          <Property Name="mTotalPaid" Type="money" />
+        </EntityType>
+        <EntityType Name="Requisition">
+          <Key>
+            <PropertyRef Name="cRequisitionCode" />
+            <PropertyRef Name="cPositionCode" />
+          </Key>
+          <Property Name="cRequisitionCode" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="cPositionCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="dDateofRequisition" Type="datetime" />
+          <Property Name="dDeadline" Type="datetime" />
+          <Property Name="cDepartmentCode" Type="char" MaxLength="4" />
+          <Property Name="vRegion" Type="varchar" MaxLength="20" />
+          <Property Name="siNoOfVacancy" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="cSkillCode" />
+          </Key>
+          <Property Name="cSkillCode" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="vSkill" Type="varchar" MaxLength="35" />
+        </EntityType>
+        <Association Name="FK__AnnualSal__cEmpl__412EB0B6">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="AnnualSalary" Type="Self.AnnualSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="cEmployeeCode" />
+            </Principal>
+            <Dependent Role="AnnualSalary">
+              <PropertyRef Name="cEmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampusRec__cColl__2F10007B">
+          <End Role="College" Type="Self.College" Multiplicity="0..1" />
+          <End Role="CampusRecruitment" Type="Self.CampusRecruitment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="College">
+              <PropertyRef Name="cCollegeCode" />
+            </Principal>
+            <Dependent Role="CampusRecruitment">
+              <PropertyRef Name="cCollegeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Candidate__cCand__5AEE82B9">
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="1" />
+          <End Role="CandidateSkill" Type="Self.CandidateSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExternalCandidate">
+              <PropertyRef Name="cCandidateCode" />
+            </Principal>
+            <Dependent Role="CandidateSkill">
+              <PropertyRef Name="cCandidateCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Candidate__cSkil__5BE2A6F2">
+          <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+          <End Role="CandidateSkill" Type="Self.CandidateSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skill">
+              <PropertyRef Name="cSkillCode" />
+            </Principal>
+            <Dependent Role="CandidateSkill">
+              <PropertyRef Name="cSkillCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__cCount__398D8EEE">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="cCountryCode" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="cCountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__cDepar__3B75D760">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="cDepartmentCode" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="cDepartmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeR__cCand__4F7CD00D">
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="0..1" />
+          <End Role="EmployeeReferrals" Type="Self.EmployeeReferrals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExternalCandidate">
+              <PropertyRef Name="cCandidateCode" />
+            </Principal>
+            <Dependent Role="EmployeeReferrals">
+              <PropertyRef Name="cCandidateCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeR__cEmpl__4E88ABD4">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmployeeReferrals" Type="Self.EmployeeReferrals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="cEmployeeCode" />
+            </Principal>
+            <Dependent Role="EmployeeReferrals">
+              <PropertyRef Name="cEmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeS__cEmpl__5441852A">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeeSkill" Type="Self.EmployeeSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="cEmployeeCode" />
+            </Principal>
+            <Dependent Role="EmployeeSkill">
+              <PropertyRef Name="cEmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeS__cSkil__5535A963">
+          <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+          <End Role="EmployeeSkill" Type="Self.EmployeeSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skill">
+              <PropertyRef Name="cSkillCode" />
+            </Principal>
+            <Dependent Role="EmployeeSkill">
+              <PropertyRef Name="cSkillCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalC__cAgen__48CFD27E">
+          <End Role="RecruitmentAgencies" Type="Self.RecruitmentAgencies" Multiplicity="0..1" />
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecruitmentAgencies">
+              <PropertyRef Name="cAgencyCode" />
+            </Principal>
+            <Dependent Role="ExternalCandidate">
+              <PropertyRef Name="cAgencyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalC__cCamp__4BAC3F29">
+          <End Role="CampusRecruitment" Type="Self.CampusRecruitment" Multiplicity="0..1" />
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampusRecruitment">
+              <PropertyRef Name="cCampusRecruitmentCode" />
+            </Principal>
+            <Dependent Role="ExternalCandidate">
+              <PropertyRef Name="cCampusRecruitmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalC__cCont__49C3F6B7">
+          <End Role="ContractRecruiter" Type="Self.ContractRecruiter" Multiplicity="0..1" />
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractRecruiter">
+              <PropertyRef Name="cContractRecruiterCode" />
+            </Principal>
+            <Dependent Role="ExternalCandidate">
+              <PropertyRef Name="cContractRecruiterCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalC__cCoun__44FF419A">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="cCountryCode" />
+            </Principal>
+            <Dependent Role="ExternalCandidate">
+              <PropertyRef Name="cCountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalC__cJobF__4AB81AF0">
+          <End Role="JobFair" Type="Self.JobFair" Multiplicity="0..1" />
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobFair">
+              <PropertyRef Name="cJobFairCode" />
+            </Principal>
+            <Dependent Role="ExternalCandidate">
+              <PropertyRef Name="cJobFairCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalC__cNews__47DBAE45">
+          <End Role="NewsAd" Type="Self.NewsAd" Multiplicity="0..1" />
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsAd">
+              <PropertyRef Name="cNewsAdNo" />
+            </Principal>
+            <Dependent Role="ExternalCandidate">
+              <PropertyRef Name="cNewsAdNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalC__cPosi__46E78A0C">
+          <End Role="Position" Type="Self.Position" Multiplicity="0..1" />
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="cPositionCode" />
+            </Principal>
+            <Dependent Role="ExternalCandidate">
+              <PropertyRef Name="cPositionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__InternalC__cInte__33D4B598">
+          <End Role="InternalJobPosting" Type="Self.InternalJobPosting" Multiplicity="1" />
+          <End Role="InternalCandidate" Type="Self.InternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InternalJobPosting">
+              <PropertyRef Name="cInternalJobPostingCode" />
+            </Principal>
+            <Dependent Role="InternalCandidate">
+              <PropertyRef Name="cInternalJobPostingCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__InternalC__cPosi__34C8D9D1">
+          <End Role="Position" Type="Self.Position" Multiplicity="0..1" />
+          <End Role="InternalCandidate" Type="Self.InternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="cPositionCode" />
+            </Principal>
+            <Dependent Role="InternalCandidate">
+              <PropertyRef Name="cPositionCodeAppliedFor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MonthlySa__cEmpl__3E52440B">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="MonthlySalary" Type="Self.MonthlySalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="cEmployeeCode" />
+            </Principal>
+            <Dependent Role="MonthlySalary">
+              <PropertyRef Name="cEmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NewsAd__cNewspap__1DE57479">
+          <End Role="Newspaper" Type="Self.Newspaper" Multiplicity="0..1" />
+          <End Role="NewsAd" Type="Self.NewsAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Newspaper">
+              <PropertyRef Name="cNewspaperCode" />
+            </Principal>
+            <Dependent Role="NewsAd">
+              <PropertyRef Name="cNewspaperCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Newspaper__cCoun__1920BF5C">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Newspaper" Type="Self.Newspaper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="cCountryCode" />
+            </Principal>
+            <Dependent Role="Newspaper">
+              <PropertyRef Name="cCountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PositionS__cPosi__5EBF139D">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="PositionSkill" Type="Self.PositionSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="cPositionCode" />
+            </Principal>
+            <Dependent Role="PositionSkill">
+              <PropertyRef Name="cPositionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PositionS__cSkil__5FB337D6">
+          <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+          <End Role="PositionSkill" Type="Self.PositionSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skill">
+              <PropertyRef Name="cSkillCode" />
+            </Principal>
+            <Dependent Role="PositionSkill">
+              <PropertyRef Name="cSkillCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Requisiti__cPosi__5812160E">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="cPositionCode" />
+            </Principal>
+            <Dependent Role="Requisition">
+              <PropertyRef Name="cPositionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HRModelStoreContainer">
+          <EntitySet Name="AnnualSalary" EntityType="Self.AnnualSalary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CampusRecruitment" EntityType="Self.CampusRecruitment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateSkill" EntityType="Self.CandidateSkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="College" EntityType="Self.College" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContractRecruiter" EntityType="Self.ContractRecruiter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeReferrals" EntityType="Self.EmployeeReferrals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeSkill" EntityType="Self.EmployeeSkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExternalCandidate" EntityType="Self.ExternalCandidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HRusers" EntityType="Self.HRusers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InternalCandidate" EntityType="Self.InternalCandidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InternalJobPosting" EntityType="Self.InternalJobPosting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobFair" EntityType="Self.JobFair" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonthlySalary" EntityType="Self.MonthlySalary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsAd" EntityType="Self.NewsAd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Newspaper" EntityType="Self.Newspaper" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PositionSkill" EntityType="Self.PositionSkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecruitmentAgencies" EntityType="Self.RecruitmentAgencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Requisition" EntityType="Self.Requisition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Skill" EntityType="Self.Skill" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AnnualSal__cEmpl__412EB0B6" Association="Self.FK__AnnualSal__cEmpl__412EB0B6">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="AnnualSalary" EntitySet="AnnualSalary" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampusRec__cColl__2F10007B" Association="Self.FK__CampusRec__cColl__2F10007B">
+            <End Role="College" EntitySet="College" />
+            <End Role="CampusRecruitment" EntitySet="CampusRecruitment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Candidate__cCand__5AEE82B9" Association="Self.FK__Candidate__cCand__5AEE82B9">
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidate" />
+            <End Role="CandidateSkill" EntitySet="CandidateSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Candidate__cSkil__5BE2A6F2" Association="Self.FK__Candidate__cSkil__5BE2A6F2">
+            <End Role="Skill" EntitySet="Skill" />
+            <End Role="CandidateSkill" EntitySet="CandidateSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__cCount__398D8EEE" Association="Self.FK__Employee__cCount__398D8EEE">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__cDepar__3B75D760" Association="Self.FK__Employee__cDepar__3B75D760">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeR__cCand__4F7CD00D" Association="Self.FK__EmployeeR__cCand__4F7CD00D">
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidate" />
+            <End Role="EmployeeReferrals" EntitySet="EmployeeReferrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeR__cEmpl__4E88ABD4" Association="Self.FK__EmployeeR__cEmpl__4E88ABD4">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeReferrals" EntitySet="EmployeeReferrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeS__cEmpl__5441852A" Association="Self.FK__EmployeeS__cEmpl__5441852A">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeSkill" EntitySet="EmployeeSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeS__cSkil__5535A963" Association="Self.FK__EmployeeS__cSkil__5535A963">
+            <End Role="Skill" EntitySet="Skill" />
+            <End Role="EmployeeSkill" EntitySet="EmployeeSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalC__cAgen__48CFD27E" Association="Self.FK__ExternalC__cAgen__48CFD27E">
+            <End Role="RecruitmentAgencies" EntitySet="RecruitmentAgencies" />
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalC__cCamp__4BAC3F29" Association="Self.FK__ExternalC__cCamp__4BAC3F29">
+            <End Role="CampusRecruitment" EntitySet="CampusRecruitment" />
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalC__cCont__49C3F6B7" Association="Self.FK__ExternalC__cCont__49C3F6B7">
+            <End Role="ContractRecruiter" EntitySet="ContractRecruiter" />
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalC__cCoun__44FF419A" Association="Self.FK__ExternalC__cCoun__44FF419A">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalC__cJobF__4AB81AF0" Association="Self.FK__ExternalC__cJobF__4AB81AF0">
+            <End Role="JobFair" EntitySet="JobFair" />
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalC__cNews__47DBAE45" Association="Self.FK__ExternalC__cNews__47DBAE45">
+            <End Role="NewsAd" EntitySet="NewsAd" />
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalC__cPosi__46E78A0C" Association="Self.FK__ExternalC__cPosi__46E78A0C">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__InternalC__cInte__33D4B598" Association="Self.FK__InternalC__cInte__33D4B598">
+            <End Role="InternalJobPosting" EntitySet="InternalJobPosting" />
+            <End Role="InternalCandidate" EntitySet="InternalCandidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__InternalC__cPosi__34C8D9D1" Association="Self.FK__InternalC__cPosi__34C8D9D1">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="InternalCandidate" EntitySet="InternalCandidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MonthlySa__cEmpl__3E52440B" Association="Self.FK__MonthlySa__cEmpl__3E52440B">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="MonthlySalary" EntitySet="MonthlySalary" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NewsAd__cNewspap__1DE57479" Association="Self.FK__NewsAd__cNewspap__1DE57479">
+            <End Role="Newspaper" EntitySet="Newspaper" />
+            <End Role="NewsAd" EntitySet="NewsAd" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Newspaper__cCoun__1920BF5C" Association="Self.FK__Newspaper__cCoun__1920BF5C">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Newspaper" EntitySet="Newspaper" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PositionS__cPosi__5EBF139D" Association="Self.FK__PositionS__cPosi__5EBF139D">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="PositionSkill" EntitySet="PositionSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PositionS__cSkil__5FB337D6" Association="Self.FK__PositionS__cSkil__5FB337D6">
+            <End Role="Skill" EntitySet="Skill" />
+            <End Role="PositionSkill" EntitySet="PositionSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Requisiti__cPosi__5812160E" Association="Self.FK__Requisiti__cPosi__5812160E">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Requisition" EntitySet="Requisition" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AnnualSalary">
+          <Key>
+            <PropertyRef Name="cEmployeeCode" />
+            <PropertyRef Name="siYear" />
+          </Key>
+          <Property Name="cEmployeeCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="mAnnualSalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="siYear" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__AnnualSal__cEmpl__412EB0B6" FromRole="AnnualSalary" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="CampusRecruitment">
+          <Key>
+            <PropertyRef Name="cCampusRecruitmentCode" />
+          </Key>
+          <Property Name="cCampusRecruitmentCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cCollegeCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="dRecruitmentStartDate" Type="DateTime" Precision="3" />
+          <Property Name="dRecruitmentEndDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="College" Relationship="Self.FK__CampusRec__cColl__2F10007B" FromRole="CampusRecruitment" ToRole="College" />
+          <NavigationProperty Name="ExternalCandidates" Relationship="Self.FK__ExternalC__cCamp__4BAC3F29" FromRole="CampusRecruitment" ToRole="ExternalCandidate" />
+        </EntityType>
+        <EntityType Name="College">
+          <Key>
+            <PropertyRef Name="cCollegeCode" />
+          </Key>
+          <Property Name="cCollegeCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cCollegeName" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="vCollegeAddress" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="cCity" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="cState" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="cZip" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cPhone" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CampusRecruitments" Relationship="Self.FK__CampusRec__cColl__2F10007B" FromRole="College" ToRole="CampusRecruitment" />
+        </EntityType>
+        <EntityType Name="ContractRecruiter">
+          <Key>
+            <PropertyRef Name="cContractRecruiterCode" />
+          </Key>
+          <Property Name="cContractRecruiterCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cName" Type="String" MaxLength="35" FixedLength="true" Unicode="false" />
+          <Property Name="vAddress" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="cCity" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="cState" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="cZip" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cFax" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="cPhone" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="siPercentageCharge" Type="Int16" />
+          <Property Name="mTotalPaid" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="ExternalCandidates" Relationship="Self.FK__ExternalC__cCont__49C3F6B7" FromRole="ContractRecruiter" ToRole="ExternalCandidate" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="cCountryCode" />
+          </Key>
+          <Property Name="cCountryCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cCountry" Type="String" MaxLength="35" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__cCount__398D8EEE" FromRole="Country" ToRole="Employee" />
+          <NavigationProperty Name="ExternalCandidates" Relationship="Self.FK__ExternalC__cCoun__44FF419A" FromRole="Country" ToRole="ExternalCandidate" />
+          <NavigationProperty Name="Newspapers" Relationship="Self.FK__Newspaper__cCoun__1920BF5C" FromRole="Country" ToRole="Newspaper" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="cDepartmentCode" />
+          </Key>
+          <Property Name="cDepartmentCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="vDepartmentName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="vDepartmentHead" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="vLocation" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__cDepar__3B75D760" FromRole="Department" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="cEmployeeCode" />
+          </Key>
+          <Property Name="cEmployeeCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="vFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="vLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cCandidateCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="vAddress" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="cCity" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="cState" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="cZip" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cCountryCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="cPhone" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="vQualification" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="dBirthDate" Type="DateTime" Precision="3" />
+          <Property Name="cSex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cCurrentPosition" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="cDesignation" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="cEmailId" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="cDepartmentCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="cRegion" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="imPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="dJoiningDate" Type="DateTime" Precision="3" />
+          <Property Name="dResignationDate" Type="DateTime" Precision="3" />
+          <Property Name="cSocialSecurityNo" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="cSupervisorCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="AnnualSalaries" Relationship="Self.FK__AnnualSal__cEmpl__412EB0B6" FromRole="Employee" ToRole="AnnualSalary" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__Employee__cCount__398D8EEE" FromRole="Employee" ToRole="Country" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Employee__cDepar__3B75D760" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="EmployeeReferrals" Relationship="Self.FK__EmployeeR__cEmpl__4E88ABD4" FromRole="Employee" ToRole="EmployeeReferrals" />
+          <NavigationProperty Name="MonthlySalaries" Relationship="Self.FK__MonthlySa__cEmpl__3E52440B" FromRole="Employee" ToRole="MonthlySalary" />
+          <NavigationProperty Name="Skills" Relationship="Self.EmployeeSkill" FromRole="Employee" ToRole="Skill" />
+        </EntityType>
+        <EntityType Name="EmployeeReferral">
+          <Key>
+            <PropertyRef Name="cEmployeeReferralNo" />
+          </Key>
+          <Property Name="cEmployeeReferralNo" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cEmployeeCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="cCandidateCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__EmployeeR__cEmpl__4E88ABD4" FromRole="EmployeeReferrals" ToRole="Employee" />
+          <NavigationProperty Name="ExternalCandidate" Relationship="Self.FK__EmployeeR__cCand__4F7CD00D" FromRole="EmployeeReferrals" ToRole="ExternalCandidate" />
+        </EntityType>
+        <EntityType Name="ExternalCandidate">
+          <Key>
+            <PropertyRef Name="cCandidateCode" />
+          </Key>
+          <Property Name="cCandidateCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="vFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="vLastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="vAddress" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="cCity" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="cState" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="cZip" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cCountryCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="cPhone" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="cPositionCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="dDateOfApplication" Type="DateTime" Precision="3" />
+          <Property Name="cEmployeeReferralNo" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="cNewsAdNo" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="cAgencyCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="cContractRecruiterCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="cJobFairCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="cCampusRecruitmentCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="cExEmployeeCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="vQualification" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="siPrevWorkExperience" Type="Int16" />
+          <Property Name="dBirthDate" Type="DateTime" Precision="3" />
+          <Property Name="cSex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cCollegeCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="mPrevAnnualSalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="imPhotograph" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="vEmailId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="dTestDate" Type="DateTime" Precision="3" />
+          <Property Name="siTestScore" Type="Int16" />
+          <Property Name="dInterviewDate" Type="DateTime" Precision="3" />
+          <Property Name="cInterviewer" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="vInterviewComments" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="cRating" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CampusRecruitment" Relationship="Self.FK__ExternalC__cCamp__4BAC3F29" FromRole="ExternalCandidate" ToRole="CampusRecruitment" />
+          <NavigationProperty Name="ContractRecruiter" Relationship="Self.FK__ExternalC__cCont__49C3F6B7" FromRole="ExternalCandidate" ToRole="ContractRecruiter" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__ExternalC__cCoun__44FF419A" FromRole="ExternalCandidate" ToRole="Country" />
+          <NavigationProperty Name="EmployeeReferrals" Relationship="Self.FK__EmployeeR__cCand__4F7CD00D" FromRole="ExternalCandidate" ToRole="EmployeeReferrals" />
+          <NavigationProperty Name="RecruitmentAgency" Relationship="Self.FK__ExternalC__cAgen__48CFD27E" FromRole="ExternalCandidate" ToRole="RecruitmentAgencies" />
+          <NavigationProperty Name="JobFair" Relationship="Self.FK__ExternalC__cJobF__4AB81AF0" FromRole="ExternalCandidate" ToRole="JobFair" />
+          <NavigationProperty Name="NewsAd" Relationship="Self.FK__ExternalC__cNews__47DBAE45" FromRole="ExternalCandidate" ToRole="NewsAd" />
+          <NavigationProperty Name="Position" Relationship="Self.FK__ExternalC__cPosi__46E78A0C" FromRole="ExternalCandidate" ToRole="Position" />
+          <NavigationProperty Name="Skills" Relationship="Self.CandidateSkill" FromRole="ExternalCandidate" ToRole="Skill" />
+        </EntityType>
+        <EntityType Name="HRuser">
+          <Key>
+            <PropertyRef Name="cUserName" />
+          </Key>
+          <Property Name="cUserName" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cPassword" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="InternalCandidate">
+          <Key>
+            <PropertyRef Name="cCandidateCode" />
+            <PropertyRef Name="cEmployeeCode" />
+            <PropertyRef Name="cInternalJobPostingCode" />
+          </Key>
+          <Property Name="cCandidateCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cEmployeeCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cInternalJobPostingCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cPositionCodeAppliedFor" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="dDateOfApplication" Type="DateTime" Precision="3" />
+          <Property Name="dTestDate" Type="DateTime" Precision="3" />
+          <Property Name="siTestScore" Type="Int16" />
+          <Property Name="dInterviewDate" Type="DateTime" Precision="3" />
+          <Property Name="cInterviewer" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="vInterviewComments" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="cRating" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="InternalJobPosting" Relationship="Self.FK__InternalC__cInte__33D4B598" FromRole="InternalCandidate" ToRole="InternalJobPosting" />
+          <NavigationProperty Name="Position" Relationship="Self.FK__InternalC__cPosi__34C8D9D1" FromRole="InternalCandidate" ToRole="Position" />
+        </EntityType>
+        <EntityType Name="InternalJobPosting">
+          <Key>
+            <PropertyRef Name="cInternalJobPostingCode" />
+          </Key>
+          <Property Name="cInternalJobPostingCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cPositionCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="siNoOfVacancies" Type="Int16" Nullable="false" />
+          <Property Name="vRegion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="dNoticeReleaseDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dDeadline" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="InternalCandidates" Relationship="Self.FK__InternalC__cInte__33D4B598" FromRole="InternalJobPosting" ToRole="InternalCandidate" />
+        </EntityType>
+        <EntityType Name="JobFair">
+          <Key>
+            <PropertyRef Name="cJobFairCode" />
+          </Key>
+          <Property Name="cJobFairCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="vLocation" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="vJobFairCompany" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="mFee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="dFairDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ExternalCandidates" Relationship="Self.FK__ExternalC__cJobF__4AB81AF0" FromRole="JobFair" ToRole="ExternalCandidate" />
+        </EntityType>
+        <EntityType Name="MonthlySalary">
+          <Key>
+            <PropertyRef Name="cEmployeeCode" />
+            <PropertyRef Name="dPayDate" />
+          </Key>
+          <Property Name="cEmployeeCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="mMonthlySalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="dPayDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="mReferralBonus" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__MonthlySa__cEmpl__3E52440B" FromRole="MonthlySalary" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="NewsAd">
+          <Key>
+            <PropertyRef Name="cNewsAdNo" />
+          </Key>
+          <Property Name="cNewsAdNo" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cNewspaperCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="dAdStartDate" Type="DateTime" Precision="3" />
+          <Property Name="dDeadline" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ExternalCandidates" Relationship="Self.FK__ExternalC__cNews__47DBAE45" FromRole="NewsAd" ToRole="ExternalCandidate" />
+          <NavigationProperty Name="Newspaper" Relationship="Self.FK__NewsAd__cNewspap__1DE57479" FromRole="NewsAd" ToRole="Newspaper" />
+        </EntityType>
+        <EntityType Name="Newspaper">
+          <Key>
+            <PropertyRef Name="cNewspaperCode" />
+          </Key>
+          <Property Name="cNewspaperCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cNewspaperName" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="vRegion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="vTypeOfNewspaper" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="vContactPerson" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="vHOAddress" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="cCity" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="cState" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="cZip" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cCountryCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="cFax" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="cPhone" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__Newspaper__cCoun__1920BF5C" FromRole="Newspaper" ToRole="Country" />
+          <NavigationProperty Name="NewsAds" Relationship="Self.FK__NewsAd__cNewspap__1DE57479" FromRole="Newspaper" ToRole="NewsAd" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="cSourceCode" />
+            <PropertyRef Name="cChequeNo" />
+            <PropertyRef Name="dDate" />
+          </Key>
+          <Property Name="cSourceCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="mAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="cChequeNo" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="dDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="cPositionCode" />
+          </Key>
+          <Property Name="cPositionCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="vDescription" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="iBudgetedStrength" Type="Int32" />
+          <Property Name="siYear" Type="Int16" />
+          <Property Name="iCurrentStrength" Type="Int32" />
+          <NavigationProperty Name="ExternalCandidates" Relationship="Self.FK__ExternalC__cPosi__46E78A0C" FromRole="Position" ToRole="ExternalCandidate" />
+          <NavigationProperty Name="InternalCandidates" Relationship="Self.FK__InternalC__cPosi__34C8D9D1" FromRole="Position" ToRole="InternalCandidate" />
+          <NavigationProperty Name="Requisitions" Relationship="Self.FK__Requisiti__cPosi__5812160E" FromRole="Position" ToRole="Requisition" />
+          <NavigationProperty Name="Skills" Relationship="Self.PositionSkill" FromRole="Position" ToRole="Skill" />
+        </EntityType>
+        <EntityType Name="RecruitmentAgency">
+          <Key>
+            <PropertyRef Name="cAgencyCode" />
+          </Key>
+          <Property Name="cAgencyCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cName" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="vAddress" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="cCity" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="cState" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="cZip" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="cPhone" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="cFax" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="siPercentageCharge" Type="Int16" />
+          <Property Name="mTotalPaid" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="ExternalCandidates" Relationship="Self.FK__ExternalC__cAgen__48CFD27E" FromRole="RecruitmentAgencies" ToRole="ExternalCandidate" />
+        </EntityType>
+        <EntityType Name="Requisition">
+          <Key>
+            <PropertyRef Name="cRequisitionCode" />
+            <PropertyRef Name="cPositionCode" />
+          </Key>
+          <Property Name="cRequisitionCode" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cPositionCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="dDateofRequisition" Type="DateTime" Precision="3" />
+          <Property Name="dDeadline" Type="DateTime" Precision="3" />
+          <Property Name="cDepartmentCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="vRegion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="siNoOfVacancy" Type="Int16" />
+          <NavigationProperty Name="Position" Relationship="Self.FK__Requisiti__cPosi__5812160E" FromRole="Requisition" ToRole="Position" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="cSkillCode" />
+          </Key>
+          <Property Name="cSkillCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="vSkill" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ExternalCandidates" Relationship="Self.CandidateSkill" FromRole="Skill" ToRole="ExternalCandidate" />
+          <NavigationProperty Name="Employees" Relationship="Self.EmployeeSkill" FromRole="Skill" ToRole="Employee" />
+          <NavigationProperty Name="Positions" Relationship="Self.PositionSkill" FromRole="Skill" ToRole="Position" />
+        </EntityType>
+        <Association Name="FK__AnnualSal__cEmpl__412EB0B6">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="AnnualSalary" Type="Self.AnnualSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="cEmployeeCode" />
+            </Principal>
+            <Dependent Role="AnnualSalary">
+              <PropertyRef Name="cEmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CampusRec__cColl__2F10007B">
+          <End Role="College" Type="Self.College" Multiplicity="0..1" />
+          <End Role="CampusRecruitment" Type="Self.CampusRecruitment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="College">
+              <PropertyRef Name="cCollegeCode" />
+            </Principal>
+            <Dependent Role="CampusRecruitment">
+              <PropertyRef Name="cCollegeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalC__cCamp__4BAC3F29">
+          <End Role="CampusRecruitment" Type="Self.CampusRecruitment" Multiplicity="0..1" />
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampusRecruitment">
+              <PropertyRef Name="cCampusRecruitmentCode" />
+            </Principal>
+            <Dependent Role="ExternalCandidate">
+              <PropertyRef Name="cCampusRecruitmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalC__cCont__49C3F6B7">
+          <End Role="ContractRecruiter" Type="Self.ContractRecruiter" Multiplicity="0..1" />
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractRecruiter">
+              <PropertyRef Name="cContractRecruiterCode" />
+            </Principal>
+            <Dependent Role="ExternalCandidate">
+              <PropertyRef Name="cContractRecruiterCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__cCount__398D8EEE">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="cCountryCode" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="cCountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalC__cCoun__44FF419A">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="cCountryCode" />
+            </Principal>
+            <Dependent Role="ExternalCandidate">
+              <PropertyRef Name="cCountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Newspaper__cCoun__1920BF5C">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Newspaper" Type="Self.Newspaper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="cCountryCode" />
+            </Principal>
+            <Dependent Role="Newspaper">
+              <PropertyRef Name="cCountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__cDepar__3B75D760">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="cDepartmentCode" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="cDepartmentCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeR__cEmpl__4E88ABD4">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmployeeReferrals" Type="Self.EmployeeReferral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="cEmployeeCode" />
+            </Principal>
+            <Dependent Role="EmployeeReferrals">
+              <PropertyRef Name="cEmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MonthlySa__cEmpl__3E52440B">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="MonthlySalary" Type="Self.MonthlySalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="cEmployeeCode" />
+            </Principal>
+            <Dependent Role="MonthlySalary">
+              <PropertyRef Name="cEmployeeCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeR__cCand__4F7CD00D">
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="0..1" />
+          <End Role="EmployeeReferrals" Type="Self.EmployeeReferral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExternalCandidate">
+              <PropertyRef Name="cCandidateCode" />
+            </Principal>
+            <Dependent Role="EmployeeReferrals">
+              <PropertyRef Name="cCandidateCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalC__cAgen__48CFD27E">
+          <End Role="RecruitmentAgencies" Type="Self.RecruitmentAgency" Multiplicity="0..1" />
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecruitmentAgencies">
+              <PropertyRef Name="cAgencyCode" />
+            </Principal>
+            <Dependent Role="ExternalCandidate">
+              <PropertyRef Name="cAgencyCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalC__cJobF__4AB81AF0">
+          <End Role="JobFair" Type="Self.JobFair" Multiplicity="0..1" />
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobFair">
+              <PropertyRef Name="cJobFairCode" />
+            </Principal>
+            <Dependent Role="ExternalCandidate">
+              <PropertyRef Name="cJobFairCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalC__cNews__47DBAE45">
+          <End Role="NewsAd" Type="Self.NewsAd" Multiplicity="0..1" />
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsAd">
+              <PropertyRef Name="cNewsAdNo" />
+            </Principal>
+            <Dependent Role="ExternalCandidate">
+              <PropertyRef Name="cNewsAdNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ExternalC__cPosi__46E78A0C">
+          <End Role="Position" Type="Self.Position" Multiplicity="0..1" />
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="cPositionCode" />
+            </Principal>
+            <Dependent Role="ExternalCandidate">
+              <PropertyRef Name="cPositionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__InternalC__cInte__33D4B598">
+          <End Role="InternalJobPosting" Type="Self.InternalJobPosting" Multiplicity="1" />
+          <End Role="InternalCandidate" Type="Self.InternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InternalJobPosting">
+              <PropertyRef Name="cInternalJobPostingCode" />
+            </Principal>
+            <Dependent Role="InternalCandidate">
+              <PropertyRef Name="cInternalJobPostingCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__InternalC__cPosi__34C8D9D1">
+          <End Role="Position" Type="Self.Position" Multiplicity="0..1" />
+          <End Role="InternalCandidate" Type="Self.InternalCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="cPositionCode" />
+            </Principal>
+            <Dependent Role="InternalCandidate">
+              <PropertyRef Name="cPositionCodeAppliedFor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NewsAd__cNewspap__1DE57479">
+          <End Role="Newspaper" Type="Self.Newspaper" Multiplicity="0..1" />
+          <End Role="NewsAd" Type="Self.NewsAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Newspaper">
+              <PropertyRef Name="cNewspaperCode" />
+            </Principal>
+            <Dependent Role="NewsAd">
+              <PropertyRef Name="cNewspaperCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Requisiti__cPosi__5812160E">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="Requisition" Type="Self.Requisition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="cPositionCode" />
+            </Principal>
+            <Dependent Role="Requisition">
+              <PropertyRef Name="cPositionCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CandidateSkill">
+          <End Role="ExternalCandidate" Type="Self.ExternalCandidate" Multiplicity="*" />
+          <End Role="Skill" Type="Self.Skill" Multiplicity="*" />
+        </Association>
+        <Association Name="EmployeeSkill">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Role="Skill" Type="Self.Skill" Multiplicity="*" />
+        </Association>
+        <Association Name="PositionSkill">
+          <End Role="Position" Type="Self.Position" Multiplicity="*" />
+          <End Role="Skill" Type="Self.Skill" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="HREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AnnualSalaries" EntityType="Self.AnnualSalary" />
+          <EntitySet Name="CampusRecruitments" EntityType="Self.CampusRecruitment" />
+          <EntitySet Name="Colleges" EntityType="Self.College" />
+          <EntitySet Name="ContractRecruiters" EntityType="Self.ContractRecruiter" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="EmployeeReferrals" EntityType="Self.EmployeeReferral" />
+          <EntitySet Name="ExternalCandidates" EntityType="Self.ExternalCandidate" />
+          <EntitySet Name="HRusers" EntityType="Self.HRuser" />
+          <EntitySet Name="InternalCandidates" EntityType="Self.InternalCandidate" />
+          <EntitySet Name="InternalJobPostings" EntityType="Self.InternalJobPosting" />
+          <EntitySet Name="JobFairs" EntityType="Self.JobFair" />
+          <EntitySet Name="MonthlySalaries" EntityType="Self.MonthlySalary" />
+          <EntitySet Name="NewsAds" EntityType="Self.NewsAd" />
+          <EntitySet Name="Newspapers" EntityType="Self.Newspaper" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Positions" EntityType="Self.Position" />
+          <EntitySet Name="RecruitmentAgencies" EntityType="Self.RecruitmentAgency" />
+          <EntitySet Name="Requisitions" EntityType="Self.Requisition" />
+          <EntitySet Name="Skills" EntityType="Self.Skill" />
+          <AssociationSet Name="FK__AnnualSal__cEmpl__412EB0B6" Association="Self.FK__AnnualSal__cEmpl__412EB0B6">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="AnnualSalary" EntitySet="AnnualSalaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CampusRec__cColl__2F10007B" Association="Self.FK__CampusRec__cColl__2F10007B">
+            <End Role="College" EntitySet="Colleges" />
+            <End Role="CampusRecruitment" EntitySet="CampusRecruitments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalC__cCamp__4BAC3F29" Association="Self.FK__ExternalC__cCamp__4BAC3F29">
+            <End Role="CampusRecruitment" EntitySet="CampusRecruitments" />
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalC__cCont__49C3F6B7" Association="Self.FK__ExternalC__cCont__49C3F6B7">
+            <End Role="ContractRecruiter" EntitySet="ContractRecruiters" />
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__cCount__398D8EEE" Association="Self.FK__Employee__cCount__398D8EEE">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalC__cCoun__44FF419A" Association="Self.FK__ExternalC__cCoun__44FF419A">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Newspaper__cCoun__1920BF5C" Association="Self.FK__Newspaper__cCoun__1920BF5C">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Newspaper" EntitySet="Newspapers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__cDepar__3B75D760" Association="Self.FK__Employee__cDepar__3B75D760">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeR__cEmpl__4E88ABD4" Association="Self.FK__EmployeeR__cEmpl__4E88ABD4">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="EmployeeReferrals" EntitySet="EmployeeReferrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MonthlySa__cEmpl__3E52440B" Association="Self.FK__MonthlySa__cEmpl__3E52440B">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="MonthlySalary" EntitySet="MonthlySalaries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeR__cCand__4F7CD00D" Association="Self.FK__EmployeeR__cCand__4F7CD00D">
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidates" />
+            <End Role="EmployeeReferrals" EntitySet="EmployeeReferrals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalC__cAgen__48CFD27E" Association="Self.FK__ExternalC__cAgen__48CFD27E">
+            <End Role="RecruitmentAgencies" EntitySet="RecruitmentAgencies" />
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalC__cJobF__4AB81AF0" Association="Self.FK__ExternalC__cJobF__4AB81AF0">
+            <End Role="JobFair" EntitySet="JobFairs" />
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalC__cNews__47DBAE45" Association="Self.FK__ExternalC__cNews__47DBAE45">
+            <End Role="NewsAd" EntitySet="NewsAds" />
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ExternalC__cPosi__46E78A0C" Association="Self.FK__ExternalC__cPosi__46E78A0C">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__InternalC__cInte__33D4B598" Association="Self.FK__InternalC__cInte__33D4B598">
+            <End Role="InternalJobPosting" EntitySet="InternalJobPostings" />
+            <End Role="InternalCandidate" EntitySet="InternalCandidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__InternalC__cPosi__34C8D9D1" Association="Self.FK__InternalC__cPosi__34C8D9D1">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="InternalCandidate" EntitySet="InternalCandidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NewsAd__cNewspap__1DE57479" Association="Self.FK__NewsAd__cNewspap__1DE57479">
+            <End Role="Newspaper" EntitySet="Newspapers" />
+            <End Role="NewsAd" EntitySet="NewsAds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Requisiti__cPosi__5812160E" Association="Self.FK__Requisiti__cPosi__5812160E">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="Requisition" EntitySet="Requisitions" />
+          </AssociationSet>
+          <AssociationSet Name="CandidateSkill" Association="Self.CandidateSkill">
+            <End Role="ExternalCandidate" EntitySet="ExternalCandidates" />
+            <End Role="Skill" EntitySet="Skills" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeSkill" Association="Self.EmployeeSkill">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Skill" EntitySet="Skills" />
+          </AssociationSet>
+          <AssociationSet Name="PositionSkill" Association="Self.PositionSkill">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="Skill" EntitySet="Skills" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HRModelStoreContainer" CdmEntityContainer="HREntities">
+          <EntitySetMapping Name="AnnualSalaries">
+            <EntityTypeMapping TypeName="HRModel.AnnualSalary">
+              <MappingFragment StoreEntitySet="AnnualSalary">
+                <ScalarProperty Name="cEmployeeCode" ColumnName="cEmployeeCode" />
+                <ScalarProperty Name="mAnnualSalary" ColumnName="mAnnualSalary" />
+                <ScalarProperty Name="siYear" ColumnName="siYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampusRecruitments">
+            <EntityTypeMapping TypeName="HRModel.CampusRecruitment">
+              <MappingFragment StoreEntitySet="CampusRecruitment">
+                <ScalarProperty Name="cCampusRecruitmentCode" ColumnName="cCampusRecruitmentCode" />
+                <ScalarProperty Name="cCollegeCode" ColumnName="cCollegeCode" />
+                <ScalarProperty Name="dRecruitmentStartDate" ColumnName="dRecruitmentStartDate" />
+                <ScalarProperty Name="dRecruitmentEndDate" ColumnName="dRecruitmentEndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colleges">
+            <EntityTypeMapping TypeName="HRModel.College">
+              <MappingFragment StoreEntitySet="College">
+                <ScalarProperty Name="cCollegeCode" ColumnName="cCollegeCode" />
+                <ScalarProperty Name="cCollegeName" ColumnName="cCollegeName" />
+                <ScalarProperty Name="vCollegeAddress" ColumnName="vCollegeAddress" />
+                <ScalarProperty Name="cCity" ColumnName="cCity" />
+                <ScalarProperty Name="cState" ColumnName="cState" />
+                <ScalarProperty Name="cZip" ColumnName="cZip" />
+                <ScalarProperty Name="cPhone" ColumnName="cPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContractRecruiters">
+            <EntityTypeMapping TypeName="HRModel.ContractRecruiter">
+              <MappingFragment StoreEntitySet="ContractRecruiter">
+                <ScalarProperty Name="cContractRecruiterCode" ColumnName="cContractRecruiterCode" />
+                <ScalarProperty Name="cName" ColumnName="cName" />
+                <ScalarProperty Name="vAddress" ColumnName="vAddress" />
+                <ScalarProperty Name="cCity" ColumnName="cCity" />
+                <ScalarProperty Name="cState" ColumnName="cState" />
+                <ScalarProperty Name="cZip" ColumnName="cZip" />
+                <ScalarProperty Name="cFax" ColumnName="cFax" />
+                <ScalarProperty Name="cPhone" ColumnName="cPhone" />
+                <ScalarProperty Name="siPercentageCharge" ColumnName="siPercentageCharge" />
+                <ScalarProperty Name="mTotalPaid" ColumnName="mTotalPaid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="HRModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="cCountryCode" ColumnName="cCountryCode" />
+                <ScalarProperty Name="cCountry" ColumnName="cCountry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="HRModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="cDepartmentCode" ColumnName="cDepartmentCode" />
+                <ScalarProperty Name="vDepartmentName" ColumnName="vDepartmentName" />
+                <ScalarProperty Name="vDepartmentHead" ColumnName="vDepartmentHead" />
+                <ScalarProperty Name="vLocation" ColumnName="vLocation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="HRModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="cEmployeeCode" ColumnName="cEmployeeCode" />
+                <ScalarProperty Name="vFirstName" ColumnName="vFirstName" />
+                <ScalarProperty Name="vLastName" ColumnName="vLastName" />
+                <ScalarProperty Name="cCandidateCode" ColumnName="cCandidateCode" />
+                <ScalarProperty Name="vAddress" ColumnName="vAddress" />
+                <ScalarProperty Name="cCity" ColumnName="cCity" />
+                <ScalarProperty Name="cState" ColumnName="cState" />
+                <ScalarProperty Name="cZip" ColumnName="cZip" />
+                <ScalarProperty Name="cCountryCode" ColumnName="cCountryCode" />
+                <ScalarProperty Name="cPhone" ColumnName="cPhone" />
+                <ScalarProperty Name="vQualification" ColumnName="vQualification" />
+                <ScalarProperty Name="dBirthDate" ColumnName="dBirthDate" />
+                <ScalarProperty Name="cSex" ColumnName="cSex" />
+                <ScalarProperty Name="cCurrentPosition" ColumnName="cCurrentPosition" />
+                <ScalarProperty Name="cDesignation" ColumnName="cDesignation" />
+                <ScalarProperty Name="cEmailId" ColumnName="cEmailId" />
+                <ScalarProperty Name="cDepartmentCode" ColumnName="cDepartmentCode" />
+                <ScalarProperty Name="cRegion" ColumnName="cRegion" />
+                <ScalarProperty Name="imPhoto" ColumnName="imPhoto" />
+                <ScalarProperty Name="dJoiningDate" ColumnName="dJoiningDate" />
+                <ScalarProperty Name="dResignationDate" ColumnName="dResignationDate" />
+                <ScalarProperty Name="cSocialSecurityNo" ColumnName="cSocialSecurityNo" />
+                <ScalarProperty Name="cSupervisorCode" ColumnName="cSupervisorCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeReferrals">
+            <EntityTypeMapping TypeName="HRModel.EmployeeReferral">
+              <MappingFragment StoreEntitySet="EmployeeReferrals">
+                <ScalarProperty Name="cEmployeeReferralNo" ColumnName="cEmployeeReferralNo" />
+                <ScalarProperty Name="cEmployeeCode" ColumnName="cEmployeeCode" />
+                <ScalarProperty Name="cCandidateCode" ColumnName="cCandidateCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExternalCandidates">
+            <EntityTypeMapping TypeName="HRModel.ExternalCandidate">
+              <MappingFragment StoreEntitySet="ExternalCandidate">
+                <ScalarProperty Name="cCandidateCode" ColumnName="cCandidateCode" />
+                <ScalarProperty Name="vFirstName" ColumnName="vFirstName" />
+                <ScalarProperty Name="vLastName" ColumnName="vLastName" />
+                <ScalarProperty Name="vAddress" ColumnName="vAddress" />
+                <ScalarProperty Name="cCity" ColumnName="cCity" />
+                <ScalarProperty Name="cState" ColumnName="cState" />
+                <ScalarProperty Name="cZip" ColumnName="cZip" />
+                <ScalarProperty Name="cCountryCode" ColumnName="cCountryCode" />
+                <ScalarProperty Name="cPhone" ColumnName="cPhone" />
+                <ScalarProperty Name="cPositionCode" ColumnName="cPositionCode" />
+                <ScalarProperty Name="dDateOfApplication" ColumnName="dDateOfApplication" />
+                <ScalarProperty Name="cEmployeeReferralNo" ColumnName="cEmployeeReferralNo" />
+                <ScalarProperty Name="cNewsAdNo" ColumnName="cNewsAdNo" />
+                <ScalarProperty Name="cAgencyCode" ColumnName="cAgencyCode" />
+                <ScalarProperty Name="cContractRecruiterCode" ColumnName="cContractRecruiterCode" />
+                <ScalarProperty Name="cJobFairCode" ColumnName="cJobFairCode" />
+                <ScalarProperty Name="cCampusRecruitmentCode" ColumnName="cCampusRecruitmentCode" />
+                <ScalarProperty Name="cExEmployeeCode" ColumnName="cExEmployeeCode" />
+                <ScalarProperty Name="vQualification" ColumnName="vQualification" />
+                <ScalarProperty Name="siPrevWorkExperience" ColumnName="siPrevWorkExperience" />
+                <ScalarProperty Name="dBirthDate" ColumnName="dBirthDate" />
+                <ScalarProperty Name="cSex" ColumnName="cSex" />
+                <ScalarProperty Name="cCollegeCode" ColumnName="cCollegeCode" />
+                <ScalarProperty Name="mPrevAnnualSalary" ColumnName="mPrevAnnualSalary" />
+                <ScalarProperty Name="imPhotograph" ColumnName="imPhotograph" />
+                <ScalarProperty Name="vEmailId" ColumnName="vEmailId" />
+                <ScalarProperty Name="cStatus" ColumnName="cStatus" />
+                <ScalarProperty Name="dTestDate" ColumnName="dTestDate" />
+                <ScalarProperty Name="siTestScore" ColumnName="siTestScore" />
+                <ScalarProperty Name="dInterviewDate" ColumnName="dInterviewDate" />
+                <ScalarProperty Name="cInterviewer" ColumnName="cInterviewer" />
+                <ScalarProperty Name="vInterviewComments" ColumnName="vInterviewComments" />
+                <ScalarProperty Name="cRating" ColumnName="cRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HRusers">
+            <EntityTypeMapping TypeName="HRModel.HRuser">
+              <MappingFragment StoreEntitySet="HRusers">
+                <ScalarProperty Name="cUserName" ColumnName="cUserName" />
+                <ScalarProperty Name="cPassword" ColumnName="cPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InternalCandidates">
+            <EntityTypeMapping TypeName="HRModel.InternalCandidate">
+              <MappingFragment StoreEntitySet="InternalCandidate">
+                <ScalarProperty Name="cCandidateCode" ColumnName="cCandidateCode" />
+                <ScalarProperty Name="cEmployeeCode" ColumnName="cEmployeeCode" />
+                <ScalarProperty Name="cInternalJobPostingCode" ColumnName="cInternalJobPostingCode" />
+                <ScalarProperty Name="cPositionCodeAppliedFor" ColumnName="cPositionCodeAppliedFor" />
+                <ScalarProperty Name="dDateOfApplication" ColumnName="dDateOfApplication" />
+                <ScalarProperty Name="dTestDate" ColumnName="dTestDate" />
+                <ScalarProperty Name="siTestScore" ColumnName="siTestScore" />
+                <ScalarProperty Name="dInterviewDate" ColumnName="dInterviewDate" />
+                <ScalarProperty Name="cInterviewer" ColumnName="cInterviewer" />
+                <ScalarProperty Name="vInterviewComments" ColumnName="vInterviewComments" />
+                <ScalarProperty Name="cRating" ColumnName="cRating" />
+                <ScalarProperty Name="cStatus" ColumnName="cStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InternalJobPostings">
+            <EntityTypeMapping TypeName="HRModel.InternalJobPosting">
+              <MappingFragment StoreEntitySet="InternalJobPosting">
+                <ScalarProperty Name="cInternalJobPostingCode" ColumnName="cInternalJobPostingCode" />
+                <ScalarProperty Name="cPositionCode" ColumnName="cPositionCode" />
+                <ScalarProperty Name="siNoOfVacancies" ColumnName="siNoOfVacancies" />
+                <ScalarProperty Name="vRegion" ColumnName="vRegion" />
+                <ScalarProperty Name="dNoticeReleaseDate" ColumnName="dNoticeReleaseDate" />
+                <ScalarProperty Name="dDeadline" ColumnName="dDeadline" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobFairs">
+            <EntityTypeMapping TypeName="HRModel.JobFair">
+              <MappingFragment StoreEntitySet="JobFair">
+                <ScalarProperty Name="cJobFairCode" ColumnName="cJobFairCode" />
+                <ScalarProperty Name="vLocation" ColumnName="vLocation" />
+                <ScalarProperty Name="vJobFairCompany" ColumnName="vJobFairCompany" />
+                <ScalarProperty Name="mFee" ColumnName="mFee" />
+                <ScalarProperty Name="dFairDate" ColumnName="dFairDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonthlySalaries">
+            <EntityTypeMapping TypeName="HRModel.MonthlySalary">
+              <MappingFragment StoreEntitySet="MonthlySalary">
+                <ScalarProperty Name="cEmployeeCode" ColumnName="cEmployeeCode" />
+                <ScalarProperty Name="mMonthlySalary" ColumnName="mMonthlySalary" />
+                <ScalarProperty Name="dPayDate" ColumnName="dPayDate" />
+                <ScalarProperty Name="mReferralBonus" ColumnName="mReferralBonus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsAds">
+            <EntityTypeMapping TypeName="HRModel.NewsAd">
+              <MappingFragment StoreEntitySet="NewsAd">
+                <ScalarProperty Name="cNewsAdNo" ColumnName="cNewsAdNo" />
+                <ScalarProperty Name="cNewspaperCode" ColumnName="cNewspaperCode" />
+                <ScalarProperty Name="dAdStartDate" ColumnName="dAdStartDate" />
+                <ScalarProperty Name="dDeadline" ColumnName="dDeadline" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Newspapers">
+            <EntityTypeMapping TypeName="HRModel.Newspaper">
+              <MappingFragment StoreEntitySet="Newspaper">
+                <ScalarProperty Name="cNewspaperCode" ColumnName="cNewspaperCode" />
+                <ScalarProperty Name="cNewspaperName" ColumnName="cNewspaperName" />
+                <ScalarProperty Name="vRegion" ColumnName="vRegion" />
+                <ScalarProperty Name="vTypeOfNewspaper" ColumnName="vTypeOfNewspaper" />
+                <ScalarProperty Name="vContactPerson" ColumnName="vContactPerson" />
+                <ScalarProperty Name="vHOAddress" ColumnName="vHOAddress" />
+                <ScalarProperty Name="cCity" ColumnName="cCity" />
+                <ScalarProperty Name="cState" ColumnName="cState" />
+                <ScalarProperty Name="cZip" ColumnName="cZip" />
+                <ScalarProperty Name="cCountryCode" ColumnName="cCountryCode" />
+                <ScalarProperty Name="cFax" ColumnName="cFax" />
+                <ScalarProperty Name="cPhone" ColumnName="cPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="HRModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="cSourceCode" ColumnName="cSourceCode" />
+                <ScalarProperty Name="mAmount" ColumnName="mAmount" />
+                <ScalarProperty Name="cChequeNo" ColumnName="cChequeNo" />
+                <ScalarProperty Name="dDate" ColumnName="dDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="HRModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="cPositionCode" ColumnName="cPositionCode" />
+                <ScalarProperty Name="vDescription" ColumnName="vDescription" />
+                <ScalarProperty Name="iBudgetedStrength" ColumnName="iBudgetedStrength" />
+                <ScalarProperty Name="siYear" ColumnName="siYear" />
+                <ScalarProperty Name="iCurrentStrength" ColumnName="iCurrentStrength" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecruitmentAgencies">
+            <EntityTypeMapping TypeName="HRModel.RecruitmentAgency">
+              <MappingFragment StoreEntitySet="RecruitmentAgencies">
+                <ScalarProperty Name="cAgencyCode" ColumnName="cAgencyCode" />
+                <ScalarProperty Name="cName" ColumnName="cName" />
+                <ScalarProperty Name="vAddress" ColumnName="vAddress" />
+                <ScalarProperty Name="cCity" ColumnName="cCity" />
+                <ScalarProperty Name="cState" ColumnName="cState" />
+                <ScalarProperty Name="cZip" ColumnName="cZip" />
+                <ScalarProperty Name="cPhone" ColumnName="cPhone" />
+                <ScalarProperty Name="cFax" ColumnName="cFax" />
+                <ScalarProperty Name="siPercentageCharge" ColumnName="siPercentageCharge" />
+                <ScalarProperty Name="mTotalPaid" ColumnName="mTotalPaid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requisitions">
+            <EntityTypeMapping TypeName="HRModel.Requisition">
+              <MappingFragment StoreEntitySet="Requisition">
+                <ScalarProperty Name="cRequisitionCode" ColumnName="cRequisitionCode" />
+                <ScalarProperty Name="cPositionCode" ColumnName="cPositionCode" />
+                <ScalarProperty Name="dDateofRequisition" ColumnName="dDateofRequisition" />
+                <ScalarProperty Name="dDeadline" ColumnName="dDeadline" />
+                <ScalarProperty Name="cDepartmentCode" ColumnName="cDepartmentCode" />
+                <ScalarProperty Name="vRegion" ColumnName="vRegion" />
+                <ScalarProperty Name="siNoOfVacancy" ColumnName="siNoOfVacancy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="HRModel.Skill">
+              <MappingFragment StoreEntitySet="Skill">
+                <ScalarProperty Name="cSkillCode" ColumnName="cSkillCode" />
+                <ScalarProperty Name="vSkill" ColumnName="vSkill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CandidateSkill" TypeName="HRModel.CandidateSkill" StoreEntitySet="CandidateSkill">
+            <EndProperty Name="ExternalCandidate">
+              <ScalarProperty Name="cCandidateCode" ColumnName="cCandidateCode" />
+            </EndProperty>
+            <EndProperty Name="Skill">
+              <ScalarProperty Name="cSkillCode" ColumnName="cSkillCode" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="EmployeeSkill" TypeName="HRModel.EmployeeSkill" StoreEntitySet="EmployeeSkill">
+            <EndProperty Name="Employee">
+              <ScalarProperty Name="cEmployeeCode" ColumnName="cEmployeeCode" />
+            </EndProperty>
+            <EndProperty Name="Skill">
+              <ScalarProperty Name="cSkillCode" ColumnName="cSkillCode" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PositionSkill" TypeName="HRModel.PositionSkill" StoreEntitySet="PositionSkill">
+            <EndProperty Name="Position">
+              <ScalarProperty Name="cPositionCode" ColumnName="cPositionCode" />
+            </EndProperty>
+            <EndProperty Name="Skill">
+              <ScalarProperty Name="cSkillCode" ColumnName="cSkillCode" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
